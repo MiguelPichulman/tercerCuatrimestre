@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formularios</title>
+    </head>
+    <body>
+        <form id="formulario">
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <label for="nombre">Nombre Completo:</label><br>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Perez" required>
+                <title>Solo letras, minimo 3 caracteres</title><br><br>
+
+                <label for="email">Correo Electronico:</label><br>
+                <input type="email" id="email" name="email" placeholder="Ej: ejemplo@mail.com" required><br><br>
+
+                <label for="telefono">Telefono:</label><br>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 11-12345678" required><br><br>
+            </fieldset>
+            <fieldset>
+                <legend>Mensaje</legend>
+                <label for="mensaje">Mensaje:</label><br>
+                <textarea name="mensaje" id="mensaje" rows="4" cols="40" required placeholder="Escriba su mensaje aqui..."></textarea>
+            </fieldset>
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+</html>
