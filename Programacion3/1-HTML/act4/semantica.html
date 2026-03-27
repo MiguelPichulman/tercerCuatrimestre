@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contacto</title>
+    </head>
+    <body>
+        <header>
+            <h1>Contacto</h1>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h2>Dejanos tu mensaje</h2>
+                <p>Complete el siguiente formulario para enviarnos su consulta.</p>
+                <form>
+                    <label for="nombre">Nombre completo:</label><br>
+                    <input type="text" id="nombre" name="nombre" required title="solo letras, minimo 3 caracteres"><br><br>
+
+                    <label for="email">Correo electronico:</label><br>
+                    <input type="email" id="email" name="email" required title="ingrese un correo valido"><br><br>
+
+                    <label for="mensaje">Mensaje</label><br>
+                    <textarea name="mensaje" id="mensaje" required minlength="10" maxlength="300"></textarea><br><br>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </section>
+            <aside>
+                <h3>Horario de atencion</h3>
+                <p>Lunes a Viernes de 9 a 18 hs</p>
+                <h3>Telefono</h3>
+                <p>+54 11 1234 5678</p>
+            </aside>
+        </main>
+        <footer>
+            <p>&copy;2026 Mi Sitio Web</p>
+        </footer>
+    </body>
+
+</html>
