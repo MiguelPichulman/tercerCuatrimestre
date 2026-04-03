@@ -1,0 +1,30 @@
+.mi-caja{
+    width: 300px;
+    padding: 10px 30 px;
+    border: 3px solid blue;
+    margin: 20px;
+    background-color: lightgreen;
+    text-align: center;
+}
+
+.caja2{
+    box-sizing: border-box;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid#ccc;
+    width: 200px;
+    height: 200px;
+    border-radius: 0.4rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 1);
+}
+
+.caja3{
+    box-sizing: content-box;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid#ccc;
+    width: 200px;
+    height: 200px;
+    border-radius: 0.4rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 1);
+}
