@@ -1,0 +1,17 @@
+.contenedor{
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;
+}
+
+.caja_block{
+    width: 180px;
+    height: 50px;
+    margin: 5px;
+    background-color: green;
+}
+
+.caja_block1{
+    width: 50px;
+    height: 80px;
+}
