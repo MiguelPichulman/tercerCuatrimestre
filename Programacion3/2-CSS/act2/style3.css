@@ -1,0 +1,29 @@
+/*ESTILOS GENERALES*/
+body{
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+header, footer{
+    text-align: center;
+    background: #403ccf;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+header{
+    position: sticky;
+    top: 0px;
+}
+/*BOTON*/
+.btn {
+    padding: 10px 20px;
+    border: 2px solid cyan;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    background: cyan;
+    color: black;
+}

@@ -1,17 +1,104 @@
+/* DISPLAY BLOCK*/
 .contenedor{
     width: 200px;
     height: 200px;
     background-color: #ccc;
 }
 
-.caja_block{
+.caja_block{/*cada div ocupa toda la fila disponible*/
     width: 180px;
     height: 50px;
-    margin: 5px;
+    margin: 5px;/* separacion*/
     background-color: green;
 }
 
 .caja_block1{
+    width: 50px;/*caja mas alta*/
+    height: 80px;/*caja mas angosta*/
+}
+
+/*DISPLAY INLINE*/
+.contenedor_inline{
+    width: 200px;
+    height: 50px;
+    background-color: #ccc;
+}
+.caja_inline{
+    display:inline;/*ocupa el ancho de su contenido*/
+    background-color: green;
+    margin: 5px;
+}
+
+/* DISLAY IN LINE - BLOCK*/
+.contenedor_inline_block{
+    width: 300px;
+    height: 150px;
+}
+.caja_inline_block{
+    display: inline-block;
     width: 50px;
+    height: 100px;
+    background-color: lightblue;
+    text-align: center;
+    line-height: 100px;
+}
+.caja1_inline_block{
+    height: 150px;
+    width: 100px;
+}
+
+/*NONE VS OPACITY*/
+.none{
+    display: none;
+}
+.hidden{
+    visibility: hidden;
+}
+
+/*OPACITY*/
+.contenedor_opacity {
+    width: 280;
+    height: 90;
+    background-color: #ccc;
+}
+.contenedor_opacity div{
+    display: inline-block;
+    width: 80px;
     height: 80px;
+    background-color: blue;
+}
+.caja1_opacity{
+    opacity: 1;
+}
+.caja2_opacity{
+    opacity: 0.5;
+}
+.caja3_opacity{
+    opacity: 0.2;
+}
+
+/*Zindex*/
+.caja_zindex{
+    position: relative;/*necesario para posicionar hijos con absolute*/
+    background-color: #ccc;
+    width: 100px;
+    height: 100px;    
+}
+.caja1_zindex{
+    position: absolute;    /*se coloca por encima del flujo normal*/
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    z-index: 2;/*prioridad de apilamiento*/
+    opacity: 0.8;
+}
+.caja2_zindex{
+    position: absolute;    /*se coloca por encima del flujo normal*/
+    top: 20px;/*lo movemos hacia abajo*/
+    left: 40px;/*lo movemos hacia la derecha*/
+    background-color: blue;
+    width: 50px;
+    height: 50px;
+    z-index: 4;/*prioridad de apilamiento*/
+    opacity: 0.8;
 }
