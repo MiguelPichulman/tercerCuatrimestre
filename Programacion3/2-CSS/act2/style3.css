@@ -27,3 +27,52 @@ header{
     background: cyan;
     color: black;
 }
+/*FOCUS*/
+input{
+    padding: 8px;
+    margin-left: 10px;
+    border: 2px solid #ccc;
+    outline: none;
+}
+input:focus{
+    border-color: #403ccf;
+    box-shadow: 1 2 5px rgba(64, 60, 207, 0.5);
+}
+/*LISTA CON CHILD*/
+.lista{
+    list-style: none;
+    padding: 0;
+}
+.lista li{
+    padding: 5px;
+    margin: 3px 0;
+    background: #eee;
+}
+.lista li:nth-child(odd){
+    color: red;
+}
+.lista li:nth-child(even){
+    color: green;
+}
+/*RELATIVE + ABSOLUTE*/
+.contenedor{
+    margin-top: 20px;
+    border: 2px solid #ccc;
+    padding: 20px;
+    width: 200px;
+}
+.caja_relativa{
+    position:relative;
+    background: #403ccf;
+    color: white;
+    padding: 20px;
+}
+.caja_absoluta{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    padding: 3px 6px;
+    font-size: 12px;
+    color: white;
+}
