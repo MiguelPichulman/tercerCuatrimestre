@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 4 - TypeScript Avanzado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input,
+        select,
+        button {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Clase 4: TypeScript + DOM (Parte 2) + Avanzado</h1>
+
+    <!-- MÓDULO 2-3: FormData -->
+    <section>
+        <h2>Módulo 2-3: FormData en Acción</h2>
+        <p><strong>Completa el formulario y mira cómo FormData extrae los datos:</strong></p>
+
+        <form id="registro">
+            <input type="text" name="nombre" placeholder="Nombre completo" required minlength="3">
+
+            <input type="email" name="email" placeholder="Email" required>
+
+            <input type="number" name="edad" placeholder="Edad" required min="18" max="100">
+
+            <select name="pais" required>
+                <option value="">-- Selecciona un país --</option>
+                <option value="ar">Argentina</option>
+                <option value="cl">Chile</option>
+                <option value="uy">Uruguay</option>
+                <option value="py">Paraguay</option>
+                <option value="br">Brasil</option>
+            </select>
+
+            <button type="submit">Registrar Usuario</button>
+        </form>
+
+        <div id="resultado"></div>
+    </section>
+
+    <!-- MÓDULO 4-5: Type Guards - instanceof -->
+    <section>
+        <h2>Módulo 4-5: Type Guards con instanceof</h2>
+        <p><strong>Haz click en cualquier elemento para ver su tipo específico:</strong></p>
+
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+            <button id="btn-demo" class="elemento-demo">Soy un Botón</button>
+            <input id="input-demo" class="elemento-demo" type="text" placeholder="Soy un Input">
+            <div id="div-demo" class="elemento-demo" style="padding: 15px; background: #e3f2fd; border: 2px solid #2196f3; border-radius: 4px; cursor: pointer;">
+                Soy un Div (haz click)
+            </div>
+            <select id="select-demo" class="elemento-demo">
+                <option>Soy un Select</option>
+            </select>
+        </div>
+
+        <div id="tipo-info" style="margin-top: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px; display: none;">
+            <h3>Información del Elemento:</h3>
+            <pre id="tipo-detalle" style="background: white; padding: 10px; border-radius: 4px; overflow-x: auto;"></pre>
+        </div>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

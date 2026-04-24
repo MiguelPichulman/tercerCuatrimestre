@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clase 3 - TypeScript + DOM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+    }
+
+    button,
+    input,
+    textarea {
+      padding: 8px 12px;
+      margin: 5px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    .resultado {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Clase 3: TypeScript + DOM (Parte 1)</h1>
+
+  <!-- MÓDULO 2: HTMLElement y variantes -->
+  <section>
+    <h2>Módulo 2: Tipos Específicos del DOM</h2>
+    <button id="btn">Click me</button>
+    <input type="text" id="input" placeholder="Escribe algo">
+    <h3 id="titulo">Título clickeable</h3>
+  </section>
+
+  <!-- MÓDULO 3: querySelector -->
+  <section>
+    <h2>Módulo 3: querySelector - Selección Individual</h2>
+    <button id="miBoton">Clickeame</button>
+    <p id="mensaje"></p>
+  </section>
+
+  <!-- MÓDULO 4: querySelectorAll -->
+  <section>
+    <h2>Módulo 4: querySelectorAll - Múltiples Elementos</h2>
+    <button class="btn">Botón 1</button>
+    <button class="btn">Botón 2</button>
+    <button class="btn">Botón 3</button>
+    <button id="deshabilitarTodos">Deshabilitar todos</button>
+  </section>
+
+  <!-- MÓDULO 5: Event Types -->
+  <section>
+    <h2>Módulo 5: Event Types - MouseEvent y KeyboardEvent</h2>
+    <button id="btnClick">Click me (MouseEvent)</button>
+    <input type="text" id="inputKey" placeholder="Presiona Enter (KeyboardEvent)">
+    <p id="info" class="resultado"></p>
+  </section>
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>
