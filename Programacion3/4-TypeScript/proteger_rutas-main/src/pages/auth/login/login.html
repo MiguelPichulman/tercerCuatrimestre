@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Food Store - Login</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
-    <h1> Login</h1>
+    <main class="login-card">
+        <h1 class="login-card__tittle">FOOD STORE</h1>
+        <h2 class="login-card__function">Iniciar Sesión</h2>
 
-    <form id="form">
+        <form id="Loginform">
 
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off" placeholder="example@example.com">
-        </div>
-        <div>
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="********">
-        </div>
-        <div>
-            <label for="rol">Rol</label>
-            <select name="rol" id="rol">
-                <option value="">Seleccione un rol</option>
-                <option value="client">Cliente</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required placeholder="ejemplo@ejemplo.com">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required placeholder="********">
+            </div>
+            
+            <button type="submit" class="boton">Ingresar</button>
 
-        <button type="submit">Ingresar</button>
+            <p>¿No tenes cuenta? <a href="../registro/registro.html" class="link">Registrate aca</a></p>
 
-    </form>
+        </form>
+    </main>
 
     <script type="module" src="./login.ts"></script>
 </body>

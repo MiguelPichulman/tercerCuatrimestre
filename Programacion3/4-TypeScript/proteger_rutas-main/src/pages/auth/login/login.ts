@@ -1,30 +1,41 @@
 import type { IUser } from "../../../types/IUser";
-import type { Rol } from "../../../types/Rol";
+import { saveUser } from "../../../utils/localStorage";
 import { navigate } from "../../../utils/navigate";
 
-const form = document.getElementById("form") as HTMLFormElement;
+const form = document.getElementById("Loginform") as HTMLFormElement;
 const inputEmail = document.getElementById("email") as HTMLInputElement;
-//const inputPassword = document.getElementById("password") as HTMLInputElement;
-const selectRol = document.getElementById("rol") as HTMLSelectElement;
+const inputPassword = document.getElementById("password") as HTMLInputElement;
 
 form.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
   const valueEmail = inputEmail.value;
-  //const valuePassword = inputPassword.value;
-  const valueRol = selectRol.value as Rol;
+  const valuePassword = inputPassword.value;
 
-  if (valueRol === "admin") {
-    navigate("/src/pages/admin/home/home.html");
-  } else if (valueRol === "client") {
-    navigate("/src/pages/client/home/home.html");
+  const usuariosGuardados = localStorage.getItem("users");
+  const listaUsuarios : IUser[]= usuariosGuardados ? JSON.parse(usuariosGuardados) : [];
+
+  // 2. Buscar si existe una coincidencia de email y contraseña 
+  const usuarioEncontrado = listaUsuarios.find(u => 
+    u.email === valueEmail && u.password === valuePassword
+  );
+
+  if (usuarioEncontrado) {
+    usuarioEncontrado.loggedIn = true;
+    
+    localStorage.setItem("userData", JSON.stringify(usuarioEncontrado));//ver
+
+    saveUser(usuarioEncontrado);
+
+    alert(`Sesión iniciada como ${usuarioEncontrado.rol}`);
+    
+    if (usuarioEncontrado.rol === "admin") {
+      navigate("/src/pages/admin/home/home.html");
+    } else {
+      navigate("/src/pages/client/home/home.html");
+    }
+
+  } else {
+    
+    alert("Email o contraseña incorrectos.");
   }
-
-  const user: IUser = {
-    email: valueEmail,
-    role: valueRol,
-    loggedIn: true,
-  };
-
-  const parseUser = JSON.stringify(user);
-  localStorage.setItem("userData", parseUser);
 });

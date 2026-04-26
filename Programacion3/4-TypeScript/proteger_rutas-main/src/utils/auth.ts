@@ -20,7 +20,7 @@ export const checkAuhtUser = (
     console.log("existe pero no tiene el rol necesario");
 
     const parseUser: IUser = JSON.parse(user);
-    if (parseUser.role !== rol) {
+    if (parseUser.rol !== rol) {
       navigate(redireccion2);
       return;
     }
