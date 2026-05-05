@@ -22,7 +22,7 @@ function renderProductos(productosARenderizar:Product[]){
         card.classList.add("producto-card");
 //innerHTML problemas con botones xq los toma como string
         card.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}" width="250px">
+            <img src="${producto.imagen}" alt="${producto.nombre}" width="150px">
             <p class="categoria-label">${producto.categorias[0].nombre || 'Categoría'}</p>
             <h3>${producto.nombre}</h3>
             <p class="descripcion">${producto.descripcion}</p>
@@ -35,7 +35,7 @@ function renderProductos(productosARenderizar:Product[]){
         //crear boton agregar al carrito
         const btnAgregar = document.createElement("button");
         btnAgregar.classList.add("btn-agregar");
-        btnAgregar.textContent="Agregar al Carrito";
+        btnAgregar.textContent="Agregar";
 
         btnAgregar.addEventListener("click", ()=>{
             agregarAlCarrito(producto);

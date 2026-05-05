@@ -1,0 +1,202 @@
+/* =========================================
+   RESETEO Y VARIABLES (Colores de la imagen)
+========================================= */
+:root {
+    --color-fondo: #fcfcfb; /* El fondo crema muy sutil */
+    --color-texto-verde: #1a3a2a; /* El verde oscuro del título */
+    --color-blanco: #ffffff;
+    --color-gris-texto: #888;
+    --color-gris-borde: #eaeaea;
+    --color-pastilla: #f5f5f5;
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: #333;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background-color: var(--color-primario);
+}
+
+header h1 {
+    color: var(--color-texto-verde);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+header a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL
+========================================= */
+main {
+    display: grid;
+    grid-template-columns: 1fr 320px; /* Productos (izq) y Resumen (der) de 320px */
+    gap: 30px;
+    padding: 0 5%;
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+}
+
+/* =========================================
+   TARJETAS DE PRODUCTO
+========================================= */
+.producto-card {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 12px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Imagen redonda */
+.producto-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.info-producto {
+    flex-grow: 1; /* Ocupa el espacio central */
+}
+
+.info-producto h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.categoria-label {
+    font-size: 0.8rem;
+    color: var(--color-gris-texto);
+    margin-bottom: 6px;
+}
+
+.precio {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Controles a la derecha */
+.controles-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea los botones a la derecha */
+    gap: 8px;
+}
+
+/* La pastilla gris de cantidad */
+.pastilla-cantidad {
+    background-color: var(--color-pastilla);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+}
+
+.pastilla-cantidad button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0 8px;
+    color: #555;
+}
+
+.pastilla-cantidad span {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin: 0 10px;
+}
+
+.btn-eliminar {
+    border: none;
+    background: transparent;
+    color: var(--color-gris-texto);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* =========================================
+   CUADRO DE RESUMEN
+========================================= */
+.resumen-compra {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 12px;
+    padding: 25px;
+    height: fit-content; /* Para que no se estire hacia abajo innecesariamente */
+}
+
+.resumen-compra h3 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.resumen-compra p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* Haciendo el total en negrita y más grande como en tu imagen */
+.resumen-compra p:nth-of-type(2) {
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+#btn-comprar {
+    width: 100%;
+    background-color: #94a3b8; /* Gris azulado del diseño */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#advertencia {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#btn-vaciar {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #753b3b;
+    color: #753b3b;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}

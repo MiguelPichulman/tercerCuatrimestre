@@ -1,5 +1,3 @@
-//import type { Product } from "../../../types/product";
-
 import type { CartItem } from "../../../types/product";
 
 function inicializarCarrito(){
@@ -50,20 +48,28 @@ function renderCarrito(carrito: CartItem[]) {
 
         // no tiene clic
         card.innerHTML = `
-            <img src="${item.product.imagen}" alt="${item.product.nombre}" width="100px">
+            <img src="${item.product.imagen}" alt="${item.product.nombre}">
             <div class="info-producto">
                 <h3>${item.product.nombre}</h3>
-                <p class="precio">Subtotal: $${subtotal}</p>
+                <p class="categoria-label">${item.product.categorias[0]?.nombre || 'Categoría'}</p>
+                <p class="precio">Subtotal: $${subtotal.toLocaleString('es-AR')}</p>
             </div>
         `;
 
         //Los botones
+
         const controles = document.createElement("div");
-        controles.classList.add("controles-cantidad");
+        controles.classList.add("controles-contenedor");
+
+        const pastillaCantidad = document.createElement("div");
+        pastillaCantidad.classList.add("pastilla-cantidad");
+
 
         // Botón Restar
         const btnRestar = document.createElement("button");
         btnRestar.textContent = "-";
+
+        
        
             // Lógica para restar 1
         btnRestar.addEventListener("click", () => {
@@ -107,6 +113,7 @@ function renderCarrito(carrito: CartItem[]) {
         // Botón Eliminar
         const btnEliminar = document.createElement("button");
         btnEliminar.textContent = "Eliminar";
+        btnEliminar.classList.add("btn-eliminar");
         
             // Lógica para quitar el producto entero
 
@@ -128,10 +135,14 @@ function renderCarrito(carrito: CartItem[]) {
         });
 
 
-        // 3. EL ENSAMBLAJE
-        controles.appendChild(btnRestar);
-        controles.appendChild(spanCantidad);
-        controles.appendChild(btnSumar);
+      // 3. EL ENSAMBLAJE
+        // Primero metemos los botones y el número en la pastilla gris
+        pastillaCantidad.appendChild(btnRestar);
+        pastillaCantidad.appendChild(spanCantidad);
+        pastillaCantidad.appendChild(btnSumar);
+
+        // Luego metemos la pastilla (ya armada) y el botón eliminar al contenedor de la derecha
+        controles.appendChild(pastillaCantidad);
         controles.appendChild(btnEliminar);
 
         // Metemos los controles a la tarjeta, y la tarjeta al HTML
@@ -141,20 +152,21 @@ function renderCarrito(carrito: CartItem[]) {
     calcularTotal(carrito);
 }
 
-function calcularTotal(carrito:CartItem[]){
-    let total=0;
-    carrito.forEach((item)=>{
-        
-        const subtotal=item.quantity*item.product.precio;
-        total= total + subtotal;
+function calcularTotal(carrito: CartItem[]) {
+    let total = 0;
+    carrito.forEach((item) => {
+        const subtotal = item.quantity * item.product.precio;
+        total = total + subtotal;
     });
-    console.log("el total es:", total);
 
-    const spanTotal= document.getElementById("total-precio");
+    const spanTotal = document.getElementById("total-precio");
+    const spanSubtotal = document.getElementById("subtotal-general"); // Atrapamos el subtotal
 
-
-    if(spanTotal){
-        spanTotal.textContent=total.toString();
+    if (spanTotal) {
+        spanTotal.textContent = total.toLocaleString('es-AR');
+    }
+    if (spanSubtotal) {
+        spanSubtotal.textContent = total.toLocaleString('es-AR'); // Lo actualizamos también
     }
 }
 
