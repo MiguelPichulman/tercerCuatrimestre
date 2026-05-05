@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Food Store</title>
+     <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Carrito</h1>
+
+        <a href="../home/home.html">Volver a la Tienda</a>
+    </header>
+
+    <main>
+        <div id="carrito-contenedor" class="carrito-grid"></div>
+
+        <aside class="resumen-compra">
+        <h3>Resumen</h3>
+        
+        <p>Subtotal: $<span id="subtotal-general">0</span></p>
+        <p>Total a pagar:$<span id="total-precio">0</span></p>
+        <button id="btn-vaciar">Vaciar Carrito</button>
+        <button id="btn-comprar" disabled>Finalizar Compra</button>
+
+        <p id="advertencia">El checkout aun no esta disponible.</p>
+
+        </aside>
+    </main>
+
+    <script type="module" src="./cart.ts"></script>
+</body>
+</html>

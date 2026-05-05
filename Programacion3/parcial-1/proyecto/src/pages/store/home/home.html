@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home TPI</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenidos a Food Store</h1>
+        <a href="../cart/cart.html" class="btn-carrito">Ver Carrito</a>
+    </header>
+
+    <main>
+        
+        <input type="text" id="buscador" placeholder="Buscar producto...">
+
+        <aside>
+            <h3>CATEGORIAS</h3>
+            <ul id="lista-categorias">
+                <li><a href="#" id="btn-ver-todo">Todas las categorias</a></li>
+            </ul>
+        </aside>
+
+        <div id="productos-contenedor" class="productos-grid"></div>
+    </main>
+
+    <script type="module" src="./home.ts"></script>
+</body>
+</html>
