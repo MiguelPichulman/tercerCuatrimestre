@@ -1,0 +1,26 @@
+# Food Store - Evaluación 1 (Programación 3)
+
+## Descripción del Proyecto
+Este proyecto es una aplicación frontend dinámica e interactiva desarrollada para la cátedra de Programación 3 de la UTN. Consiste en la evolución de un catálogo de comidas (Food Store) que permite a los usuarios interactuar con los productos.
+
+Las funcionalidades principales implementadas son:
+* Renderizado dinámico del catálogo de productos y categorías.
+* Búsqueda de productos por nombre en tiempo real.
+* Filtrado de productos por categoría.
+* Carrito de compras funcional con persistencia de datos utilizando `localStorage`.
+* Capacidad para agregar, modificar cantidades y eliminar productos del carrito.
+* Cálculo automático del subtotal y total de la compra.
+
+El desarrollo se realizó utilizando HTML5, CSS3, JavaScript y TypeScript puro (Vanilla), sin el uso de frameworks externos, y está empaquetado utilizando Vite.
+
+## Instrucciones para ejecutarlo
+
+Para levantar este proyecto en un entorno local, asegúrate de tener instalado Node.js y `pnpm` (el gestor de paquetes configurado por la cátedra).
+
+1. **Clonar el repositorio:**
+   Si aún no tienes el código localmente, clona el repositorio o extrae los archivos del .zip.
+
+2. **Instalar las dependencias:**
+   Abre una terminal en la carpeta raíz del proyecto y ejecuta:
+   ```bash
+   pnpm install

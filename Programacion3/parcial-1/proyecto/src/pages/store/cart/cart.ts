@@ -33,12 +33,15 @@ function renderCarrito(carrito: CartItem[]) {
         
         // Ocultamos el cuadro de resumen completo
         if (asideResumen) asideResumen.style.display = 'none';
+
+        contenedorCarrito.style.gridColumn='1/3';
         
         return; // Cortamos la ejecución aquí
     }
     
     // Si hay productos, nos aseguramos de volver a mostrar el cuadro de resumen
     if (asideResumen) asideResumen.style.display = 'block';
+    contenedorCarrito.style.gridColumn='1/2';
 
     carrito.forEach((item) => {
         const card = document.createElement("article");
