@@ -13,14 +13,58 @@ Las funcionalidades principales implementadas son:
 
 El desarrollo se realizó utilizando HTML5, CSS3, JavaScript y TypeScript puro (Vanilla), sin el uso de frameworks externos, y está empaquetado utilizando Vite.
 
-## Instrucciones para ejecutarlo
 
-Para levantar este proyecto en un entorno local, asegúrate de tener instalado Node.js y `pnpm` (el gestor de paquetes configurado por la cátedra).
+## 🚀 Instalación y Uso
 
-1. **Clonar el repositorio:**
-   Si aún no tienes el código localmente, clona el repositorio o extrae los archivos del .zip.
+Se recomienda usar `pnpm` como gestor de paquetes para mayor eficiencia en el manejo de dependencias.
 
-2. **Instalar las dependencias:**
-   Abre una terminal en la carpeta raíz del proyecto y ejecuta:
-   ```bash
-   pnpm install
+### 1. Instalar pnpm
+
+Si no tienes `pnpm` instalado, puedes hacerlo fácilmente a través de `npm` (que viene con Node.js) ejecutando el siguiente comando en tu terminal:
+
+```bash
+npm install -g pnpm
+```
+
+### 2. Instalar Dependencias del Proyecto
+
+Una vez en la carpeta raíz del proyecto, instala las dependencias necesarias con `pnpm`:
+
+```bash
+pnpm install
+```
+
+### 3. Ejecutar el Proyecto
+
+Para iniciar el servidor de desarrollo de Vite, ejecuta:
+
+```bash
+pnpm dev
+```
+
+La aplicación estará disponible en la URL que aparezca en la terminal (generalmente `http://localhost:5173`).
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+## Estructura del Proyecto
+
+Las páginas y lógica del parcial se ubican dentro de `src/`, respetando la siguiente organización:
+
+```text
+src/
+├── pages/
+│   └── store/
+│       ├── home/
+│       │   ├── home.html    <- catálogo de productos
+│       │   └── home.ts      <- lógica: render, búsqueda, filtros
+│       └── cart/
+│           ├── cart.html    <- vista del carrito
+│           └── cart.ts      <- lógica: render, cantidades, total
+├── types/
+│   ├── product.ts           <- interfaces Product y CartItem
+│   └── categoria.ts         <- interface Icategoria
+└── data/
+    └── data.ts              <- PRODUCTS y getCategories()
