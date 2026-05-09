@@ -38,7 +38,7 @@ Para iniciar el servidor de desarrollo de Vite, ejecuta:
 pnpm dev
 ```
 
-La aplicación estará disponible en la URL que aparezca en la terminal (generalmente `http://localhost:5173`).
+La aplicación estará disponible en la URL http://localhost:5173/src/pages/store/home/home.html
 
 ---
 

@@ -5,6 +5,8 @@
     --color-blanco: #fff;
     --color-borde: #ddd;
     --color-focus: #ff4500;
+    --color-texto-verde: #1a3a2a;
+    --color-gris-texto: #888;
 }
 body{
     font-family: Arial, sans-serif;
@@ -49,7 +51,7 @@ aside {
 
 aside h3 {
     font-size: 0.8rem;
-    color: #777;
+    color: var(--color-gris-texto);
     letter-spacing: 1px;
     margin-bottom: 15px;
     margin-left: 10px;
@@ -62,7 +64,7 @@ aside ul {
 aside ul li a {
     display: block;
     padding: 10px 15px;
-    color: #333;
+    color: var(--color-texto);
     text-decoration: none;
     font-weight: bold;
     border-radius: 8px;
@@ -71,17 +73,16 @@ aside ul li a {
 }
 
 aside ul li a:hover {
-    background-color: #ddd;
+    background-color: var(--color-borde);
 }
 
 
 #buscador {
-    /*columna 2, fila 1 */
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     
     padding: 12px 20px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-borde);
     border-radius: 25px;
     width: 100%;
     max-width: 400px;
@@ -90,25 +91,24 @@ aside ul li a:hover {
 }
 
 .mensaje-vacio {
-    color: #777;
+    color: var(--color-gris-texto);
     font-size: 1.2rem;
     padding: 40px;
     grid-column: 1 / -1;
 }
 
 #productos-contenedor {
-    /* productos van a la columna 2, fila 2 */
+    
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
-/*  GRILLA DE PRODUCTO*/
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
 }
 
-/*DISEÑO DE LA TARJETA (CARD) */
+
 .producto-card {
     background-color: white;
     border-radius: 12px;
@@ -116,14 +116,14 @@ aside ul li a:hover {
     border: 1px solid #eee;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
     display: flex;
-    flex-direction: column; /* Apila los elementos de arriba hacia abajo */
+    flex-direction: column; 
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .producto-card:hover {
-    transform: translateY(-8px); /* eleva la tarjeta 8 pixeles hacia arriba */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1); /* hace la sombra mas grande y difuminada */
-    border-color: #ddd; /* oscurece un poquito el borde para darle mas contraste */
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1); 
+    border-color: var(--color-borde); 
 }
 
 .producto-card img {
@@ -134,50 +134,48 @@ aside ul li a:hover {
     margin-bottom: 15px;
 }
 
-/* Etiqueta de Categoría dinamica */
 .categoria-label {
     font-size: 0.75rem;
-    color: #ff6347;
+    color: var(--color-primario);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 5px;
 }
 
-/* Titulo del producto */
 .producto-card h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--color-texto);
     margin-bottom: 8px;
 }
 
-/* Descripción */
+
 .descripcion {
     font-size: 0.85rem;
-    color: #777;
+    color: var(--color-gris-texto);
     line-height: 1.4;
     margin-bottom: 15px;
     flex-grow: 1;
 }
 
-/*PIE DE LA TARJETA (Precio y Boton) */
+
 .footer-card {
     display: flex;
-    justify-content: space-between; /* Uno a la izq y otro a la der */
+    justify-content: space-between; 
     align-items: center;
-    margin-top: auto; /* Se asegura de pegarse abajo */
+    margin-top: auto; 
 }
 
 .precio {
     font-weight: bold;
     font-size: 1.1rem;
-    color: #333;
+    color: var(--color-texto);
 }
 
 .btn-agregar {
-    background-color: #1a3a2a; /* Verde oscuro */
+    background-color: var(--color-texto-verde);
     color: white;
-    border: none; /* Sin estilos en línea */
+    border: none; 
     padding: 8px 16px;
     border-radius: 6px;
     font-weight: bold;
@@ -187,5 +185,5 @@ aside ul li a:hover {
 }
 
 .btn-agregar:hover {
-    background-color: #2c5a42; /*mas claro al pasar el mouse */
+    background-color: #2c5a42; 
 }

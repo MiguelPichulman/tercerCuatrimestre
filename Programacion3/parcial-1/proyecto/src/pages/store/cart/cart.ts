@@ -21,7 +21,7 @@ function renderCarrito(carrito: CartItem[]) {
     if (!contenedorCarrito) return;
     contenedorCarrito.innerHTML = ''; 
 
-    // --- EL ESTADO VACIO ---                    //si no hay carrito
+    // EL ESTADO VACIO                           //si no hay carrito
     if (carrito.length === 0) {                  //INYECTAMOS icono, texto y enlace al catalogo                           
         
         contenedorCarrito.innerHTML = `
@@ -32,15 +32,13 @@ function renderCarrito(carrito: CartItem[]) {
             </div>
         `;
         
-        // Ocultamos el cuadro de resumen completo
         if (asideResumen) asideResumen.style.display = 'none';
 
         contenedorCarrito.style.gridColumn='1/3';
         
-        return; // Cortamos aca
+        return;
     }
-    
-    // Si hay productos, nos aseguramos de mostrar el cuadro de resumen
+
     if (asideResumen) asideResumen.style.display = 'block';
     contenedorCarrito.style.gridColumn='1/2';
 
@@ -72,17 +70,14 @@ function renderCarrito(carrito: CartItem[]) {
         const btnRestar = document.createElement("button");
         btnRestar.textContent = "-";
        
-            // Logica para restar 1
         btnRestar.addEventListener("click", () => {
-            // Validamos que no pueda bajar de 1 (no cantidades negativas)
+           
             if (item.quantity > 1) {
-                // Modificamos el dato
+                
                 item.quantity -= 1;
                 
-                // Guardamos en memoria (Sobreescribimos el carrito entero)
                 localStorage.setItem("carrito-food-store", JSON.stringify(carritoActual));
                 
-                // Actualizamos la pantalla
                 renderCarrito(carritoActual);
                 //calcularTotal(carritoActual);
             }
@@ -95,15 +90,12 @@ function renderCarrito(carrito: CartItem[]) {
         const btnSumar = document.createElement("button");
         btnSumar.textContent = "+";
         
-            // Logica para sumar 1
         btnSumar.addEventListener("click", () => {
-            // Modificamos el dato
+            
             item.quantity += 1;
             
-            // Guardamos en memoria
             localStorage.setItem("carrito-food-store", JSON.stringify(carritoActual));
             
-            // Actualizamos la pantalla
             renderCarrito(carritoActual);
             //calcularTotal(carritoActual);
         });
@@ -114,37 +106,31 @@ function renderCarrito(carrito: CartItem[]) {
         btnEliminar.textContent = "Eliminar";
         btnEliminar.classList.add("btn-eliminar");
         
-            // Lógica para quitar el producto entero
+            // Logica para quitar el producto entero
 
         btnEliminar.addEventListener("click", () => {
-            // 1. Buscamos la posicion del producto
+           
             const indice = carritoActual.findIndex((elemento) => elemento.product.id === item.product.id);
 
-            // 2. Si lo encontramos, lo sacamos del arreglo (borramos 1 elemento en esa posicion)
+            
             if (indice !== -1) {
                 carritoActual.splice(indice, 1);
             }
 
-            // 3. Guardamos la nueva lista en la memoria
             localStorage.setItem("carrito-food-store", JSON.stringify(carritoActual));
 
-            // 4. Actualizamos la pantalla y el total
             renderCarrito(carritoActual);
             //calcularTotal(carritoActual);
         });
 
 
-      // ENSAMBLAJE
-        // los botones y el numero en la pastilla gris
         pastillaCantidad.appendChild(btnRestar);
         pastillaCantidad.appendChild(spanCantidad);
         pastillaCantidad.appendChild(btnSumar);
 
-        // la pastilla y el boton eliminar al contenedor de la derecha
         controles.appendChild(pastillaCantidad);
         controles.appendChild(btnEliminar);
 
-        // controles a la tarjeta y la tarjeta al HTML
         card.appendChild(controles);
         contenedorCarrito.appendChild(card);
     });
@@ -185,5 +171,4 @@ btnVaciar?.addEventListener("click", () => {
     vaciarCarrito();
 });
 
-// Al final del archivo
 renderCarrito(carritoActual);
