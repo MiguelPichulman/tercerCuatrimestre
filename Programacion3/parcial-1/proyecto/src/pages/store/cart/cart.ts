@@ -1,28 +1,29 @@
 import type { CartItem } from "../../../types/product";
 
 function inicializarCarrito(){
-    const carritoString = localStorage.getItem("carrito-food-store");
+    const carritoString = localStorage.getItem("carrito-food-store");        //traigo el localStorage
 
-    let carrito: CartItem[]=carritoString ? JSON.parse(carritoString):[];
+    let carrito: CartItem[]=carritoString ? JSON.parse(carritoString):[];  //se parsea si existe 
 
     console.log(carrito)
     return carrito;
 }
-let carritoActual= inicializarCarrito();
+let carritoActual= inicializarCarrito();                //se guarda para manejar el estado en toda la pagina
 
 const contenedorCarrito = document.getElementById("carrito-contenedor");
 
+//RENDER CARRITO
+
 function renderCarrito(carrito: CartItem[]) {
     
-    // Capturamos el cuadro de resumen usando su clase
-    const asideResumen = document.querySelector(".resumen-compra") as HTMLElement; 
-
+    const asideResumen = document.querySelector(".resumen-compra") as HTMLElement; //funcion ppal de renderizado
+                                                                                   
     if (!contenedorCarrito) return;
-    contenedorCarrito.innerHTML = '';
+    contenedorCarrito.innerHTML = ''; 
 
-    // --- EL ESTADO VACÍO BASADO EN TU DISEÑO ---
-    if (carrito.length === 0) {
-        // Dibujamos el icono, el texto y el enlace al catálogo sin estilos en línea
+    // --- EL ESTADO VACIO ---                    //si no hay carrito
+    if (carrito.length === 0) {                  //INYECTAMOS icono, texto y enlace al catalogo                           
+        
         contenedorCarrito.innerHTML = `
             <div class="estado-vacio">
                 <span>🛒</span>
@@ -36,21 +37,21 @@ function renderCarrito(carrito: CartItem[]) {
 
         contenedorCarrito.style.gridColumn='1/3';
         
-        return; // Cortamos la ejecución aquí
+        return; // Cortamos aca
     }
     
-    // Si hay productos, nos aseguramos de volver a mostrar el cuadro de resumen
+    // Si hay productos, nos aseguramos de mostrar el cuadro de resumen
     if (asideResumen) asideResumen.style.display = 'block';
     contenedorCarrito.style.gridColumn='1/2';
 
-    carrito.forEach((item) => {
-        const card = document.createElement("article");
+    carrito.forEach((item) => {                               //recorremos el array al igual que con el catalogo
+        const card = document.createElement("article");        //creamos la etiqueta article y  usamos innerHTML
         card.classList.add("producto-card");
 
-        const subtotal = item.product.precio * item.quantity;
+        const subtotal = item.product.precio * item.quantity; //precio del producto por cantidad que figura en el carrito
 
-        // no tiene clic
-        card.innerHTML = `
+                                                        //*armado hibrido innerHTML y createElement
+        card.innerHTML = `                                                          
             <img src="${item.product.imagen}" alt="${item.product.nombre}">
             <div class="info-producto">
                 <h3>${item.product.nombre}</h3>
@@ -63,7 +64,6 @@ function renderCarrito(carrito: CartItem[]) {
 
         const controles = document.createElement("div");
         controles.classList.add("controles-contenedor");
-
         const pastillaCantidad = document.createElement("div");
         pastillaCantidad.classList.add("pastilla-cantidad");
 
@@ -71,12 +71,10 @@ function renderCarrito(carrito: CartItem[]) {
         // Botón Restar
         const btnRestar = document.createElement("button");
         btnRestar.textContent = "-";
-
-        
        
-            // Lógica para restar 1
+            // Logica para restar 1
         btnRestar.addEventListener("click", () => {
-            // 1. Validamos que no pueda bajar de 1 (¡No queremos cantidades negativas!)
+            // Validamos que no pueda bajar de 1 (no cantidades negativas)
             if (item.quantity > 1) {
                 // Modificamos el dato
                 item.quantity -= 1;
@@ -90,8 +88,6 @@ function renderCarrito(carrito: CartItem[]) {
             }
         });
 
-
-        // El numerito de la cantidad actual
         const spanCantidad = document.createElement("span");
         spanCantidad.textContent = item.quantity.toString();
 
@@ -99,7 +95,7 @@ function renderCarrito(carrito: CartItem[]) {
         const btnSumar = document.createElement("button");
         btnSumar.textContent = "+";
         
-            // Lógica para sumar 1
+            // Logica para sumar 1
         btnSumar.addEventListener("click", () => {
             // Modificamos el dato
             item.quantity += 1;
@@ -121,10 +117,10 @@ function renderCarrito(carrito: CartItem[]) {
             // Lógica para quitar el producto entero
 
         btnEliminar.addEventListener("click", () => {
-            // 1. Buscamos en qué posición está este producto
+            // 1. Buscamos la posicion del producto
             const indice = carritoActual.findIndex((elemento) => elemento.product.id === item.product.id);
 
-            // 2. Si lo encontramos, lo "cortamos" del arreglo (borramos 1 elemento en esa posición)
+            // 2. Si lo encontramos, lo sacamos del arreglo (borramos 1 elemento en esa posicion)
             if (indice !== -1) {
                 carritoActual.splice(indice, 1);
             }
@@ -138,25 +134,28 @@ function renderCarrito(carrito: CartItem[]) {
         });
 
 
-      // 3. EL ENSAMBLAJE
-        // Primero metemos los botones y el número en la pastilla gris
+      // ENSAMBLAJE
+        // los botones y el numero en la pastilla gris
         pastillaCantidad.appendChild(btnRestar);
         pastillaCantidad.appendChild(spanCantidad);
         pastillaCantidad.appendChild(btnSumar);
 
-        // Luego metemos la pastilla (ya armada) y el botón eliminar al contenedor de la derecha
+        // la pastilla y el boton eliminar al contenedor de la derecha
         controles.appendChild(pastillaCantidad);
         controles.appendChild(btnEliminar);
 
-        // Metemos los controles a la tarjeta, y la tarjeta al HTML
+        // controles a la tarjeta y la tarjeta al HTML
         card.appendChild(controles);
         contenedorCarrito.appendChild(card);
     });
     calcularTotal(carrito);
 }
 
-function calcularTotal(carrito: CartItem[]) {
-    let total = 0;
+
+//CALCULAR TOTAL
+
+function calcularTotal(carrito: CartItem[]) {              //funcion que itera sobre los items multiplicando su cantidad por su valor
+    let total = 0;                                          //almmacena en total y leugo se actualiza el DOM
     carrito.forEach((item) => {
         const subtotal = item.quantity * item.product.precio;
         total = total + subtotal;
@@ -169,12 +168,12 @@ function calcularTotal(carrito: CartItem[]) {
         spanTotal.textContent = total.toLocaleString('es-AR');
     }
     if (spanSubtotal) {
-        spanSubtotal.textContent = total.toLocaleString('es-AR'); // Lo actualizamos también
+        spanSubtotal.textContent = total.toLocaleString('es-AR'); // Lo actualizamos tambien
     }
 }
 
 function vaciarCarrito(){
-    localStorage.removeItem("carrito-food-store");
+    localStorage.removeItem("carrito-food-store");  //vacia el array del localStorage y renderiza 
     carritoActual=[];
 
     renderCarrito(carritoActual);

@@ -3,9 +3,9 @@ import type { Product } from "../../../types/product";
 import { getCategories } from "../../../data/data";
 import type { CartItem } from "../../../types/product";
 
-const contenedor = document.getElementById("productos-contenedor"); //mete en contenedor , productos-contenedor
+const contenedor = document.getElementById("productos-contenedor");
 
-function renderProductos(productosARenderizar:Product[]){
+function renderProductos(productosARenderizar:Product[]){  ////FUNCION RENDER
     
     if(!contenedor)return;
 
@@ -16,9 +16,9 @@ function renderProductos(productosARenderizar:Product[]){
         return;
     }
 
-    productosARenderizar.forEach((producto)=>{
-        const card = document.createElement("article");
-
+    productosARenderizar.forEach((producto)=>{                          //se recorre el array de productos 
+        const card = document.createElement("article");                 //para inyectar los productos al html
+                                                                        //con innnerHTML
         card.classList.add("producto-card");
 //innerHTML problemas con botones xq los toma como string
         card.innerHTML = `
@@ -32,11 +32,10 @@ function renderProductos(productosARenderizar:Product[]){
 
             
         `;
-        //crear boton agregar al carrito
-        const btnAgregar = document.createElement("button");
-        btnAgregar.classList.add("btn-agregar");
-        btnAgregar.textContent="Agregar";
-
+        //crear boton agregar al carrito                            
+        const btnAgregar = document.createElement("button");        //aunque para agregar el btn agregar utilizamos
+        btnAgregar.classList.add("btn-agregar");                    //createElement ya que dentro de innerHTML se
+        btnAgregar.textContent="Agregar";                           // pierde la capacidad de atarle el evento clic
         btnAgregar.addEventListener("click", ()=>{
             agregarAlCarrito(producto);
         });
@@ -52,32 +51,37 @@ function renderProductos(productosARenderizar:Product[]){
 
 renderProductos(PRODUCTS);
 
-//buscador
-const buscador = document.getElementById("buscador") as HTMLInputElement;
+
+//  BUSCADOR
+
+const buscador = document.getElementById("buscador") as HTMLInputElement; //captura elemento input
 
 buscador?.addEventListener("input", ()=>{
     const texto=buscador.value.toLowerCase();
 
-    const filtroProducto= PRODUCTS.filter((producto)=>{
-        const nombreProducto= producto.nombre.toLowerCase();
-        return nombreProducto.includes(texto);
+    const filtroProducto= PRODUCTS.filter((producto)=>{       // utilizamos filter sobre el array de producto para generar 
+        const nombreProducto= producto.nombre.toLowerCase();  //un nuevo array que coincida con lo ingresado en el input
+        return nombreProducto.includes(texto);                //y luego renderiza el nuevo array
 });
     renderProductos(filtroProducto);
 });
 
-//render de categorias
-const listaUl= document.getElementById("lista-categorias");
 
+//RENDER DE CATEGORIAS
+
+
+const listaUl= document.getElementById("lista-categorias"); //se genera el menu de categorias
+                                                            //recorriendo el array de categorias
 const renderCategorias = () =>{
     const listaCategorias = (getCategories());
      
     if(!listaUl) return;
 
     listaCategorias.forEach(categoria=>{
-    const nuevoLi = document.createElement("li");
-    const nuevoEnlace = document.createElement("a");
-
-        nuevoEnlace.textContent=categoria.nombre;
+    const nuevoLi = document.createElement("li");          //crando elemntos li y a
+    const nuevoEnlace = document.createElement("a");       // el evento click de cada enlace, utiliza filter y
+                                                           //some para verificar si dentro del array existe
+        nuevoEnlace.textContent=categoria.nombre;          // el id de la categoria que el usuario clickeo
         nuevoEnlace.href="#";
 
         nuevoEnlace.addEventListener("click", (e)=>{
@@ -98,26 +102,32 @@ const renderCategorias = () =>{
 }
 renderCategorias();
 
-//capturar boton, evento clic
-const btnVerTodo = document.getElementById("btn-ver-todo");
 
-btnVerTodo?.addEventListener("click",(e)=>{
-    e.preventDefault();
 
-    renderProductos(PRODUCTS);
+// BOTON VER TODO //
+
+const btnVerTodo = document.getElementById("btn-ver-todo"); //captuarmos el btn-ver-todo
+
+btnVerTodo?.addEventListener("click",(e)=>{  //si existe en el DOM asigna el evento
+    e.preventDefault();       //evita el comportamiento por defecto
+
+    renderProductos(PRODUCTS);    //renderiza todo
 });
 
-//funcion agregar al carrito
+
+
+//AGREGAR AL CARRITO ///
+
 function agregarAlCarrito(productoElegido : Product){
-    const carritoString = localStorage.getItem("carrito-food-store");
+    const carritoString = localStorage.getItem("carrito-food-store");  //traigo el localStorage
     
-    let carrito: CartItem[]=carritoString ? JSON.parse(carritoString):[];
+    let carrito: CartItem[]=carritoString ? JSON.parse(carritoString):[];  //si hay algo lo parseo, si no vacio
 
     const indiceExistente = carrito.findIndex((item)=>item.product.id === productoElegido.id);
 
-    if(indiceExistente !== -1){
-        carrito[indiceExistente].quantity += 1;
-
+    if(indiceExistente !== -1){                                                 // usamos findindex para ver si el producto elegido
+        carrito[indiceExistente].quantity += 1;                 //ya esta en el carrito. SI= incrementa en 1
+                                                                //NO= se hace un push con un elemento nuevo en el array
     }else{
         const nuevoItem: CartItem={
             product: productoElegido,
@@ -126,9 +136,9 @@ function agregarAlCarrito(productoElegido : Product){
         };
         carrito.push(nuevoItem);
     }
+                                                                            // se almacena todo de nuevo en localStorage
+        localStorage.setItem("carrito-food-store", JSON.stringify(carrito));  //stringify (inverso de JSON)
 
-        localStorage.setItem("carrito-food-store", JSON.stringify(carrito));
-
-        alert(`${productoElegido.nombre} fue agregado correctamente`);
+        alert(`${productoElegido.nombre} fue agregado correctamente`); // aviso de agregado
     
 }
