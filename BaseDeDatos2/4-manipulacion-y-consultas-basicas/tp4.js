@@ -30,27 +30,31 @@ db.createCollection("prestamos",{
             bsonType:"object",
             required:["libro", "usuario", "fecha_prestamo", "fecha_devolucion", "estado"],
             properties:{
-                libro:{
+                libro:
+                {
                     bsonType:"object",
                     required:["titulo", "autor", "isbn"],
-                    properties:{
+                    properties:
+                    {
                         titulo:{bsonType:"string"},
                         autor:{bsonType:"string"},
                         isbn:{bsonType:"string"}
                     },
                 },
-                usuario:{
+                usuario:
+                {
                     bsonType:"object",
                     required:["nombre","dni","email"],
-                    properties:{
+                    properties:
+                    {
                         nombre:{bsonType:"string"},
                         dni:{bsonType:"number"},
                         email:{bsonType:"string"}
-                    },
+                    }
+                },
                 fecha_prestamo:{bsonType:"date"},
                 fecha_devolucion:{bsonType:"date"},
                 estado:{enum:["activo", "devuelto", "retrasado"]}
-                }
             }
         }
     }
@@ -63,7 +67,7 @@ db.libros.insertMany([
     autor:"Cosme Fulanito",
     isbn:"123456",
     anio_publicacion:1901,
-    disponible:true,
+    disponible:false,
     categorias:["ciencia ficcion", "policial"]
     },
     {
@@ -83,7 +87,7 @@ db.libros.insertMany([
     categorias:["accion", "policial"]
     },
     {
-    titulo:"Luis Perez",
+    titulo:"Libro 4",
     autor:"Cosme Fulanito",
     isbn:"123459",
     anio_publicacion:1904,
@@ -101,9 +105,69 @@ db.libros.insertMany([
 ])
 
 //- Insertar 3 préstamos
+db.prestamos.insertMany([
+    {
+        libro:{
+            titulo:"Libro 1",
+            autor:"Cosme Fulanito",
+            isbn:"123456"
+        },
+        usuario:{
+            nombre:"Joaquin Rodriguez",
+            dni:12345678,
+            email:"joaco@mail.com"
+        },
+        fecha_prestamo: new Date("2026-05-01T10:00:00Z"),
+        fecha_devolucion:new Date("2026-05-14T10:00:00Z"),
+        estado:"activo"
+    },
+    {
+        libro:{
+            titulo:"Libro 5",
+            autor:"Cosme Fulanito",
+            isbn:"123460"
+        },
+        usuario:{
+            nombre:"Martin Perez",
+            dni:23456789,
+            email:"tincho@mail.com"
+        },
+        fecha_prestamo: new Date("2026-05-05T10:00:00Z"),
+        fecha_devolucion:new Date("2026-05-10T10:00:00Z"),
+        estado:"devuelto" 
+    },
+    {
+         libro:{
+            titulo:"Libro 4",
+            autor:"Cosme Fulanito",
+            isbn:"123459"
+        },
+        usuario:{
+            nombre:"Miguel Angel",
+            dni:12456789,
+            email:"miguelito@mail.com"
+        },
+        fecha_prestamo: new Date("2026-05-01T10:00:00Z"),
+        fecha_devolucion:new Date("2026-05-11T10:00:00Z"),
+        estado:"retrasado"
+    }
+])
+
 //- Consultar libros disponibles
+db.libros.find({disponible:true})
+
 //- Actualizar estado de un préstamo
+db.prestamos.updateOne(
+    {"usuario.email":"joaco@mail.com"},
+    {$set:{estado:"retrasado"}}
+)
+
 //- Buscar préstamos atrasados
+db.prestamos.find({estado:"retrasado"})
+
 //- Agregar categoría a un libro con $addToSet
 
-
+db.libros.updateOne(
+    {"titulo":"Libro 1"},
+    {$addToSet:{categorias:"suspenso"}}
+)
