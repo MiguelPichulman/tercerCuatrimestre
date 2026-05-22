@@ -1,0 +1,20 @@
+1. Introduction
+"Hello . Today, I would like to explain what TypeScript is and compare it with JavaScript .
+
+In my opinion , understanding this evolution is very important for modern developers . JavaScript is a highly flexible programming language used to build web applications . However, this flexibility can create problems and make the code difficult to maintain when projects grow large .
+
+To solve this, Microsoft created TypeScript, which is considered a superset of JavaScript . This means that all JavaScript code is valid inside TypeScript, but it adds static typing and advanced development tools ."
+
+
+2. Development
+"Now, let's talk about the features and advantages . One advantage is that TypeScript adds static typing . Because of static typing, the compiler will detect errors early during the development process, instead of in production . For example, if a function expects a number data type and we use a string, the tool will show an error immediately .
+
+This feature will drastically improve our code quality and readability . Furthermore, TypeScript provides intelligent autocompletion and better documentation inside our IDEs, which makes teamwork much easier when multiple developers work on the same project .
+
+Although TypeScript requires an extra compilation step to transpile files into JavaScript so browsers can understand them, this step is a very small cost for better safety and structure ."
+
+
+3. Conclusion
+"In conclusion , TypeScript is not a replacement for JavaScript, but its natural evolution . Developers and teams choose to use it because it makes code more reliable, organized, and maintainable in the long term .
+
+Using TypeScript in our professional projects will help us avoid common mistakes and save development time . For these reasons, it is the best technical choice for large-scale applications .
