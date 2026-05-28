@@ -3,6 +3,7 @@ package com.tup.programacion3.entities;
 import com.tup.programacion3.enums.Rol;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Usuario extends Base{
@@ -71,5 +72,30 @@ public class Usuario extends Base{
 
     public void setPedidos(Set<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(mail, usuario.mail) && Objects.equals(celular, usuario.celular) && Objects.equals(contrasena, usuario.contrasena) && rol == usuario.rol;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), nombre, apellido, mail, celular, contrasena, rol);
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", mail='" + mail + '\'' +
+                ", celular='" + celular + '\'' +
+                ", contrasena='" + contrasena + '\'' +
+                ", rol=" + rol +
+                '}';
     }
 }

@@ -1,6 +1,8 @@
 package com.tup.programacion3.entities;
 
-public class DetallePedido extends Base{
+import java.util.Objects;
+
+public class DetallePedido extends Base {
     private int cantidad;
     private Double subtotal;
     private Producto producto;
@@ -31,16 +33,26 @@ public class DetallePedido extends Base{
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-    //Metodos
-    public void addDetallePedido(int cantidad, Producto producto){
-        DetallePedido nuevoDetalle = new DetallePedido();
-        nuevoDetalle.setCantidad(cantidad);
-        nuevoDetalle.setProducto(producto);
 
-        if(producto!=null && producto.getPrecio()!=null){
-            nuevoDetalle.subtotal = (cantidad * producto.getPrecio());
-        }
-        this.detallePedidos.add(nuevoDetalle);              //ver!!!!!
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DetallePedido that = (DetallePedido) o;
+        return cantidad == that.cantidad && Objects.equals(subtotal, that.subtotal);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cantidad, subtotal);
+    }
+
+    @Override
+    public String toString() {
+        return "DetallePedido{" +
+                "cantidad=" + cantidad +
+                ", subtotal=" + subtotal +
+                ", producto=" + producto +
+                '}';
+    }
 }

@@ -1,8 +1,9 @@
 package com.tup.programacion3.entities;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public abstract class Base { //abstract xq nunca vamos ainstanciar un objeto Base
+public abstract class Base { //abstract xq nunca vamos a instanciar un objeto Base
     private Long id;
     private boolean eliminado;
     private LocalDate createdAt;
@@ -32,5 +33,26 @@ public abstract class Base { //abstract xq nunca vamos ainstanciar un objeto Bas
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Base{" +
+                "id=" + id +
+                ", eliminado=" + eliminado +
+                ", createdAt=" + createdAt +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Base base = (Base) o;
+        return Objects.equals(id, base.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
