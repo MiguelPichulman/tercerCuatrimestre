@@ -4,13 +4,13 @@ import com.tup.programacion3.enums.Estado;
 import com.tup.programacion3.enums.FormaPago;
 import com.tup.programacion3.interfaces.Calculable;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class Pedido extends Base implements Calculable {
-    private LocalDate fecha;
+    private LocalDateTime fecha;
     private Estado estado;
     private Double total;
     private FormaPago formaPago;
@@ -21,11 +21,11 @@ public class Pedido extends Base implements Calculable {
     public Pedido() {
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

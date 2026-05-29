@@ -1,9 +1,22 @@
 package com.tup.programacion3;
+
 import com.tup.programacion3.entities.Categoria;
+import com.tup.programacion3.entities.Pedido;
 import com.tup.programacion3.entities.Producto;
+import com.tup.programacion3.entities.Usuario;
+import com.tup.programacion3.enums.Estado;
+import com.tup.programacion3.enums.FormaPago;
+import com.tup.programacion3.enums.Rol;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        //PUNTO 3
+        //CATEGORIAS
 
         Categoria electrodomesticos = new Categoria();
         electrodomesticos.setId(1L);
@@ -19,9 +32,10 @@ public class Main {
         blanco.setId(3L);
         blanco.setNombre("Ropa Blanca");
         blanco.setDescripcion("Ropa de cama, baño");
-
+//PRODUCTOS
         Producto producto1 = new Producto();
         producto1.setId(1L);
+        producto1.setNombre("Heladera");
         producto1.setPrecio(699000.0);
         producto1.setDescripcion("Heladera 300 lts");
         producto1.setStock(10);
@@ -48,7 +62,6 @@ public class Main {
         producto3.setImagen("licuadora.jpg");
         producto3.setDisponible(true);
         electrodomesticos.getProductos().add(producto3);
-
 
 
         Producto producto4 = new Producto();
@@ -120,6 +133,141 @@ public class Main {
         producto10.setImagen("almohada.jpg");
         producto10.setDisponible(true);
         blanco.getProductos().add(producto10);
+//USUARIOS
+        Usuario usuario1 = new Usuario();
+        usuario1.setNombre("miguel angel");
+        usuario1.setApellido("Pichulman");
+        usuario1.setMail("miguel@mail.com");
+        usuario1.setCelular("155123456");
+        usuario1.setContrasena("pass123");
+        usuario1.setRol(Rol.ADMIN);
+        usuario1.setId(1L);
+        usuario1.setEliminado(false);
+        usuario1.setCreatedAt(LocalDateTime.now());
 
+        Usuario usuario2 = new Usuario();
+        usuario2.setNombre("joaquin");
+        usuario2.setApellido("Rodriguez");
+        usuario2.setMail("joaco@mail.com");
+        usuario2.setCelular("135123456");
+        usuario2.setContrasena("pass1234");
+        usuario2.setRol(Rol.USUARIO);
+        usuario2.setId(2L);
+        usuario2.setEliminado(false);
+        usuario2.setCreatedAt(LocalDateTime.now());
+        //PEDIDOS
+//PEDIDO 1
+        Pedido pedido1 = new Pedido();
+        pedido1.setFecha(LocalDateTime.now());
+        pedido1.setEstado(Estado.PENDIENTE);
+        pedido1.setTotal(123.0);
+        pedido1.setFormaPago(FormaPago.EFECTIVO);
+        pedido1.setId(1L);
+        pedido1.setEliminado(false);
+        pedido1.setCreatedAt(LocalDateTime.now());
+
+        pedido1.setUsuario(usuario1);
+
+        pedido1.addDetallePedido(2,producto4);
+        pedido1.addDetallePedido(1,producto7);
+
+        pedido1.calcularTotal();
+
+        //PEDIDO 2
+        Pedido pedido2 = new Pedido();
+        pedido2.setFecha(LocalDateTime.now());
+        pedido2.setEstado(Estado.CONFIRMADO);
+        pedido2.setTotal(123.0);
+        pedido2.setFormaPago(FormaPago.TARJETA);
+        pedido2.setId(1L);
+        pedido2.setEliminado(false);
+        pedido2.setCreatedAt(LocalDateTime.now());
+
+        pedido2.setUsuario(usuario2);
+
+        pedido2.addDetallePedido(2,producto6);
+        pedido2.addDetallePedido(4,producto7);
+
+        pedido2.calcularTotal();
+
+        //PEDIDO 3
+        Pedido pedido3 = new Pedido();
+        pedido3.setFecha(LocalDateTime.now());
+        pedido3.setEstado(Estado.CANCELADO);
+        pedido3.setTotal(123.0);
+        pedido3.setFormaPago(FormaPago.TRANSFERENCIA);
+        pedido3.setId(1L);
+        pedido3.setEliminado(false);
+        pedido3.setCreatedAt(LocalDateTime.now());
+
+        pedido3.setUsuario(usuario2);
+
+        pedido3.addDetallePedido(3,producto9);
+        pedido3.addDetallePedido(2,producto10);
+
+        pedido3.calcularTotal();
+
+//IMPRIME POR PANTALLA
+
+        System.out.println("---------- RESUMEN DE USUARIOS ----------");
+        System.out.println(usuario1);
+        System.out.println(usuario2);
+
+        usuario1.getPedidos().add(pedido1);
+        usuario2.getPedidos().add(pedido2);
+        usuario2.getPedidos().add(pedido3);
+
+        //PUNTO 4
+        // 1. Mostrar un producto
+        System.out.println("Un Producto: " + producto4);
+
+        // 2. Listado de productos cargados
+        System.out.println("\nListado de Productos Cargados:");
+        for (Producto p : electrodomesticos.getProductos()) System.out.println(p);
+        for (Producto p : alimentos.getProductos()) System.out.println(p);
+        for (Producto p : blanco.getProductos()) System.out.println(p);
+
+        // 3. Pedidos del usuario con mas pedidos
+
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        listaUsuarios.add(usuario1);
+        listaUsuarios.add(usuario2);
+
+
+        Usuario usuarioConMasPedidos = null;
+        int maxPedidos = -1;
+
+
+        for (Usuario u : listaUsuarios) {
+            int cantidadActual = u.getPedidos().size();
+
+            if (cantidadActual > maxPedidos) {
+                maxPedidos = cantidadActual;
+                usuarioConMasPedidos = u;
+            }
+        }
+
+        if (usuarioConMasPedidos != null) {
+            System.out.println("\nPedidos del usuario con más pedidos (" + usuarioConMasPedidos.getNombre() + " con " + maxPedidos + " pedidos):");
+            for (Pedido p : usuarioConMasPedidos.getPedidos()) {
+                System.out.println(p);
+            }
+        }
+
+        System.out.println("\n---------- PUNTO 5 ----------");
+        // producto trampa con el mismo id que la heladera
+        Producto productoDuplicado = new Producto();
+        productoDuplicado.setId(1L);
+        productoDuplicado.setNombre("Heladera");
+        productoDuplicado.setPrecio(699000.0);
+        productoDuplicado.setStock(10);
+        productoDuplicado.setImagen("heladera.jpg");
+        productoDuplicado.setDisponible(true);
+
+
+        System.out.println("El producto duplicado es igual al producto1? " + productoDuplicado.equals(producto1));
+
+        boolean existeEnColeccion = electrodomesticos.getProductos().contains(productoDuplicado);
+        System.out.println("El producto duplicado ya existe en la coleccion de electrodomesticos? " + existeEnColeccion);
     }
 }
