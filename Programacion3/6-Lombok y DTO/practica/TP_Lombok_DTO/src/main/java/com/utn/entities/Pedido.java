@@ -4,7 +4,6 @@ import com.utn.enums.Estado;
 import com.utn.enums.FormaPago;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
+
 @SuperBuilder
 
 public class Pedido extends Base implements Calculable {
@@ -24,12 +23,10 @@ public class Pedido extends Base implements Calculable {
     private FormaPago formaPago;
 
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     private Usuario usuario;
 
     @Builder.Default
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     private Set<DetallePedido> detallePedidos = new HashSet<>();
 
 
@@ -68,10 +65,10 @@ public class Pedido extends Base implements Calculable {
     }
 
     public void deleteDetallePedidobyProducto(Producto producto){
-        // 1. Lo buscamos (usando el método que ya tenés)
+        // 1. Lo buscamos
         DetallePedido detalleEncontrado = findDetallePedidoByProducto(producto);//sugerencia IA
 
-        // 2. Si lo encontramos, lo borramos (sin bucles de por medio)
+        // 2. Si lo encontramos, lo borramos
         if (detalleEncontrado != null) {
             this.detallePedidos.remove(detalleEncontrado);
         }

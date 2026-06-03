@@ -4,7 +4,6 @@ package com.utn.entities;
 import com.utn.enums.Rol;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +12,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
 @SuperBuilder
 
 public class Usuario extends Base{
@@ -26,7 +24,6 @@ public class Usuario extends Base{
 
     @Builder.Default
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     private Set<Pedido> pedidos = new HashSet<>();
 
 }

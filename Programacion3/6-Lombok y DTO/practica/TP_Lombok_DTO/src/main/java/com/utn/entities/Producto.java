@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
 @SuperBuilder
 
 public class Producto extends Base {
