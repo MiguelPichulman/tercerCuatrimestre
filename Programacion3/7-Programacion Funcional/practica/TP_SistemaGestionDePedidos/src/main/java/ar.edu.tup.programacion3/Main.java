@@ -1,0 +1,318 @@
+package ar.edu.tup.programacion3;
+
+
+
+import ar.edu.tup.programacion3.entities.Pedido;
+import ar.edu.tup.programacion3.entities.Categoria;
+import ar.edu.tup.programacion3.entities.Usuario;
+import ar.edu.tup.programacion3.entities.Producto;
+import ar.edu.tup.programacion3.entities.DetallePedido;
+import ar.edu.tup.programacion3.enums.Estado;
+import ar.edu.tup.programacion3.enums.FormaPago;
+import ar.edu.tup.programacion3.enums.Rol;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Main {
+    public static void main(String[] args) {
+//CATEGORIAS
+        Categoria electrodomesticos = Categoria.builder()
+                .id(1L)
+                .nombre("Electrodomésticos")
+                .descripcion("Artículos para el hogar")
+                .build();
+
+        Categoria alimentos = Categoria.builder()
+                .id(2L)
+                .nombre("Alimentos")
+                .descripcion("Articulos comestibles")
+                .build();
+
+        Categoria blanco = Categoria.builder()
+                .id(3L)
+                .nombre("Ropa BLanca")
+                .descripcion("Ropa de cama, baño")
+                .build();
+//USUARIOS
+        Usuario usuario1 = Usuario.builder()
+                .nombre("Miguel Angel")
+                .apellido("Pichulman")
+                .mail("miguel@mail.com")
+                .celular("155123456")
+                .contrasena("pass123")
+                .rol(Rol.ADMIN)
+                .id(1L)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        Usuario usuario2 = Usuario.builder()
+                .nombre("Joaquin")
+                .apellido("Rodriguez")
+                .mail("joaco@mail.com")
+                .celular("3515123456")
+                .contrasena("joacopass123")
+                .rol(Rol.USUARIO)
+                .id(2L)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .build();
+
+
+        //PRODUCTOS
+        Producto producto1 = Producto.builder()
+                .id(1L)
+                .nombre("Heladera")
+                .precio(699999.0)
+                .descripcion("Heladera 300 lts")
+                .stock(15)
+                .imagen("heladera.jpg")
+                .disponible(true)
+                .build();
+        electrodomesticos.getProductos().add(producto1);
+
+        Producto producto2 = Producto.builder()
+                .id(2L)
+                .nombre("Microondas")
+                .precio(150000.0)
+                .descripcion("Microondas digital 20 lts")
+                .stock(15)
+                .imagen("microondas.jpg")
+                .disponible(true)
+                .build();
+        electrodomesticos.getProductos().add(producto2);
+
+        Producto producto3 = Producto.builder()
+                .id(3L)
+                .nombre("Licuadora")
+                .precio(45000.0)
+                .descripcion("Licuadora de vidrio 1.5 lts")
+                .stock(20)
+                .imagen("licuadora.jpg")
+                .disponible(true)
+                .build();
+        electrodomesticos.getProductos().add(producto3);
+
+        Producto producto4 = Producto.builder()
+                .id(4L)
+                .nombre("Hamburguesa Doble")
+                .precio(8500.0)
+                .descripcion("Doble carne con queso y bacon")
+                .stock(50)
+                .imagen("hamburguesa.jpg")
+                .disponible(true)
+                .build();
+        alimentos.getProductos().add(producto4);
+
+        Producto producto5 = Producto.builder()
+                .id(5L)
+                .nombre("Pizza Especial")
+                .precio(9200.0)
+                .descripcion("Piza muzzarella con jamon y morrones")
+                .stock(30)
+                .imagen("pizza.jpg")
+                .disponible(true)
+                .build();
+        alimentos.getProductos().add(producto5);
+
+        Producto producto6 = Producto.builder()
+                .id(6L)
+                .nombre("Papas Fritas Cheddar")
+                .precio(4500.0)
+                .descripcion("Porcion grande con cheddar y verdeo")
+                .stock(40)
+                .imagen("papas.jpg")
+                .disponible(true)
+                .build();
+        alimentos.getProductos().add(producto6);
+
+
+        Producto producto7 = Producto.builder()
+                .id(7L)
+                .nombre("Coca Cola 1.5lts")
+                .precio(2200.0)
+                .descripcion("Gaseosa linea Coca Cola")
+                .stock(100)
+                .imagen("gaseosa.jpg")
+                .disponible(true)
+                .build();
+        alimentos.getProductos().add(producto7);
+
+        Producto producto8 = Producto.builder()
+                .id(8L)
+                .nombre("Juego de Sabanas")
+                .precio(35000.0)
+                .descripcion("Sabanas 2 plazas 100% algodon")
+                .stock(25)
+                .imagen("sabanas.jpg")
+                .disponible(true)
+                .build();
+        blanco.getProductos().add(producto8);
+
+        Producto producto9 = Producto.builder()
+                .id(9L)
+                .nombre("Toallon de Baño")
+                .precio(1200.0)
+                .descripcion("Toallon gigante super absorbente")
+                .stock(30)
+                .imagen("toallon.jpg")
+                .disponible(true)
+                .build();
+        blanco.getProductos().add(producto9);
+
+        Producto producto10 = Producto.builder()
+                .id(10L)
+                .nombre("Almohada Viscolastica")
+                .precio(18500.0)
+                .descripcion("Almohada con memoria inteligente")
+                .stock(4)
+                .imagen("almohada.jpg")
+                .disponible(true)
+                .build();
+        blanco.getProductos().add(producto10);
+
+        //PEDIDOS
+//PEDIDO 1
+        Pedido pedido1 = Pedido.builder()
+                .id(1L)
+                .fecha(LocalDateTime.now())
+                .estado(Estado.PENDIENTE)
+                .formaPago(FormaPago.EFECTIVO)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .usuario(usuario1)
+                .build();
+
+        pedido1.addDetallePedido(2, producto1);
+        pedido1.addDetallePedido(1, producto2);
+
+        pedido1.calcularTotal();
+
+        //PEDIDO 2
+
+        Pedido pedido2 = Pedido.builder()
+                .id(2L)
+                .fecha(LocalDateTime.now())
+                .estado(Estado.CONFIRMADO)
+                .formaPago(FormaPago.TARJETA)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .usuario(usuario2)
+                .build();
+
+        pedido2.addDetallePedido(2, producto6);
+        pedido2.addDetallePedido(4, producto7);
+
+        pedido2.calcularTotal();
+
+        //PEDIDO 3
+        Pedido pedido3 = Pedido.builder()
+                .id(3L)
+                .fecha(LocalDateTime.now())
+                .estado(Estado.CANCELADO)
+                .formaPago(FormaPago.TRANSFERENCIA)
+                .eliminado(false)
+                .createdAt(LocalDateTime.now())
+                .usuario(usuario2)
+                .build();
+
+        pedido3.addDetallePedido(3, producto9);
+        pedido3.addDetallePedido(2, producto10);
+
+        pedido3.calcularTotal();
+
+        //IMPRIME POR PANTALLA
+
+        System.out.println("---------- RESUMEN DE USUARIOS ----------");
+        System.out.println(usuario1);
+        System.out.println(usuario2);
+
+        usuario1.getPedidos().add(pedido1);
+        usuario2.getPedidos().add(pedido2);
+        usuario2.getPedidos().add(pedido3);
+
+        //PUNTO 4
+        // 1. Mostrar un producto
+        System.out.println("Un Producto: " + producto4);
+
+        // 2. Listado de productos cargados
+        System.out.println("\nListado de Productos Cargados:");
+        for (Producto p : electrodomesticos.getProductos()) System.out.println(p);
+        for (Producto p : alimentos.getProductos()) System.out.println(p);
+        for (Producto p : blanco.getProductos()) System.out.println(p);
+
+        // 3. Pedidos del usuario con mas pedidos
+
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        listaUsuarios.add(usuario1);
+        listaUsuarios.add(usuario2);
+
+
+        Usuario usuarioConMasPedidos = null;
+        int maxPedidos = -1;
+
+
+        for (Usuario u : listaUsuarios) {
+            int cantidadActual = u.getPedidos().size();
+
+            if (cantidadActual > maxPedidos) {
+                maxPedidos = cantidadActual;
+                usuarioConMasPedidos = u;
+            }
+        }
+
+        if (usuarioConMasPedidos != null) {
+            System.out.println("\nPedidos del usuario con mas pedidos (" + usuarioConMasPedidos.getNombre() + " con " + maxPedidos + " pedidos):");
+            for (Pedido p : usuarioConMasPedidos.getPedidos()) {
+                System.out.println(p);
+            }
+        }
+
+        System.out.println("\n---------- Producto trampa ----------");
+        // producto trampa con el mismo id que la heladera
+
+        Producto productoDuplicado = Producto.builder()
+                .id(1L)
+                .nombre("Cocina")
+                .precio(699999.0)
+                .descripcion("Ccina 4 hornallas con horno")
+                .stock(13)
+                .imagen("cocina.jpg")
+                .disponible(true)
+                .build();
+        electrodomesticos.getProductos().add(productoDuplicado);
+
+        System.out.println("El producto duplicado es igual al producto1? " + productoDuplicado.equals(producto1));
+
+        boolean existeEnColeccion = electrodomesticos.getProductos().contains(productoDuplicado);
+        System.out.println("El producto duplicado ya existe en la coleccion de electrodomesticos? " + existeEnColeccion);
+
+        System.out.println("\n--- PUNTO 2: Productos Disponibles en Alimentos ---");
+        alimentos.getProductos().stream()
+                .filter(Producto::getDisponible)
+                .forEach(System.out::println);
+
+
+        System.out.println("Cantidad de items en el Pedido 1");
+        int cantidadItems = pedido2.getDetallePedidos().stream()
+                .mapToInt(DetallePedido::getCantidad)
+                .sum();
+        System.out.println("El pedido 2 tiene un total de " + cantidadItems + " items fisicos.");
+
+
+        System.out.println("productos con stock menor a 5");
+
+        List<Producto> todosLosProductos = new ArrayList<>();
+        todosLosProductos.addAll(electrodomesticos.getProductos());
+        todosLosProductos.addAll(alimentos.getProductos());
+        todosLosProductos.addAll(blanco.getProductos());
+
+        todosLosProductos.stream()
+                .filter(producto -> producto.getStock() < 5)
+                .forEach(System.out::println);
+
+    }
+}
