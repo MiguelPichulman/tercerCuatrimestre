@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.tp.jpa'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Hibernate y JPA (Versión 5.x para compatibilidad con javax.persistence)
+    implementation 'org.hibernate:hibernate-core:5.6.15.Final'
+
+    // Base de datos H2
+    runtimeOnly 'com.h2database:h2:2.2.224'
+
+    // Lombok para ahorrarnos getters, setters y usar @Builder
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+}
