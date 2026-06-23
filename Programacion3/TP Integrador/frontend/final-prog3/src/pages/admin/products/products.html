@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Food Store</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="../adminHome/adminHome.css">
+    <link rel="stylesheet" href="../categories/categories.css"> </head>
+<body>
+    <header class="header-principal">
+        <h1 class="header-logo"><a href="../adminHome/adminHome.html">Food Store</a></h1>
+        <nav class="header-nav">
+            <a href="../../store/home/home.html" class="nav-link">Tienda</a>
+            <a href="../adminHome/adminHome.html" class="nav-link">Panel Admin</a>
+            <span id="admin-name-display" class="nav-user-name"></span>
+            <button id="btn-logout-admin" class="btn-logout">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>Administración</h3>
+                <p>Panel de control</p>
+            </div>
+            <nav>
+                <ul class="admin-menu">
+                    <li><a href="../adminHome/adminHome.html">📊 Dashboard</a></li>
+                    <li><a href="../categories/categories.html">📁 Categorías</a></li>
+                    <li><a href="./products.html" class="active">🍔 Productos</a></li>
+                    <li><a href="../orders/orders.html">📦 Pedidos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header flex-header">
+                <h2>Gestión de Productos</h2>
+                <button id="btn-nuevo-producto" class="btn-verde">+ Nuevo Producto</button>
+            </div>
+
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-productos">
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-producto" class="modal-overlay oculto">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="modal-titulo">Nuevo Producto</h2>
+                <button id="btn-cerrar-modal" class="btn-cerrar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-producto">
+                    <input type="hidden" id="prod-id">
+                    
+                    <label>Nombre:</label>
+                    <input type="text" id="prod-nombre" required class="input-form">
+
+                    <label>Descripción:</label>
+                    <textarea id="prod-desc" required class="input-form" style="height: 60px;"></textarea>
+
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label>Precio ($):</label>
+                            <input type="number" id="prod-precio" required min="1" class="input-form">
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Stock:</label>
+                            <input type="number" id="prod-stock" required min="0" class="input-form">
+                        </div>
+                    </div>
+
+                    <label>Categoría:</label>
+                    <select id="prod-categoria" required class="input-form">
+                        </select>
+
+                    <label>URL Imagen:</label>
+                    <input type="text" id="prod-img" required class="input-form">
+
+                    <label>
+                        <input type="checkbox" id="prod-disponible" checked> 
+                        Producto Disponible para la venta
+                    </label>
+
+                    <button type="submit" class="btn-verde btn-guardar">Guardar Producto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./products.ts"></script>
+</body>
+</html>

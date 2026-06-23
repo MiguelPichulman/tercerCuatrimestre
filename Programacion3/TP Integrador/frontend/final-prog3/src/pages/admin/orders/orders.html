@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos Admin - Food Store</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="../adminHome/adminHome.css">
+    <link rel="stylesheet" href="./orders.css">
+</head>
+<body>
+    <header class="header-principal">
+        <h1 class="header-logo"><a href="../adminHome/adminHome.html">Food Store</a></h1>
+        <nav class="header-nav">
+            <a href="../../store/home/home.html" class="nav-link">Tienda</a>
+            <a href="../adminHome/adminHome.html" class="nav-link">Panel Admin</a>
+            <span id="admin-name-display" class="nav-user-name"></span>
+            <button id="btn-logout-admin" class="btn-logout">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>Administración</h3>
+                <p>Panel de control</p>
+            </div>
+            <nav>
+                <ul class="admin-menu">
+                    <li><a href="../adminHome/adminHome.html">📊 Dashboard</a></li>
+                    <li><a href="../categories/categories.html">📁 Categorías</a></li>
+                    <li><a href="../products/products.html">🍔 Productos</a></li>
+                    <li><a href="./orders.html" class="active">📦 Pedidos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header flex-header">
+                <h2>Gestión de Pedidos</h2>
+                <div class="filtro-container">
+                    <label for="filtro-estado">Filtrar por estado:</label>
+                    <select id="filtro-estado" class="input-form">
+                        <option value="TODOS">Todos los pedidos</option>
+                        <option value="PENDIENTE">Pendientes</option>
+                        <option value="EN_PREPARACION">En Preparación</option>
+                        <option value="CONFIRMADO">Confirmados</option>
+                        <option value="ENTREGADO">Entregados</option>
+                        <option value="TERMINADO">Terminados</option>
+                        <option value="CANCELADO">Cancelados</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="contenedor-pedidos" class="pedidos-list">
+                </div>
+        </main>
+    </div>
+
+    <div id="modal-pedido" class="modal-overlay oculto">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 id="modal-titulo">Detalle del Pedido</h2>
+                <button id="btn-cerrar-modal" class="btn-cerrar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pedido-info">
+                    <p><strong>Cliente:</strong> <span id="detalle-cliente"></span></p>
+                    <p><strong>Fecha:</strong> <span id="detalle-fecha"></span></p>
+                    <p><strong>Forma de Pago:</strong> <span id="detalle-pago"></span></p>
+                    <p><strong>Total:</strong> $<span id="detalle-total"></span></p>
+                </div>
+
+                <h3>Productos</h3>
+                <ul id="lista-productos-pedido" class="lista-detalles">
+                    </ul>
+
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+                <form id="form-estado-pedido">
+                    <input type="hidden" id="pedido-id">
+                    <label for="select-estado-modal"><strong>Cambiar Estado del Pedido:</strong></label>
+                    <select id="select-estado-modal" class="input-form">
+                        <option value="PENDIENTE">PENDIENTE</option>
+                        <option value="CONFIRMADO">CONFIRMADO</option>
+                        <option value="TERMINADO">TERMINADO</option>
+                        <option value="CANCELADO">CANCELADO</option>
+                    </select>
+                    <button type="submit" class="btn-verde btn-guardar">Actualizar Estado</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./orders.ts"></script>
+</body>
+</html>

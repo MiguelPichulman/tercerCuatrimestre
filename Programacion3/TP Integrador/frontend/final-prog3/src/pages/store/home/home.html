@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Food Store</title>
+    <link rel="stylesheet" href="./home.css">
+</head>
+<body>
+
+    <header class="header-principal">
+        <h1 class="header-logo"><a href="../home/home.html">Food Store</a></h1>
+        <nav class="header-nav">
+            <a href="../home/home.html" class="nav-link">Inicio</a>
+            <a href="../../client/orders/orders.html" id="nav-pedidos" class="nav-link">Mis Pedidos</a>
+            <a href="../../admin/adminHome/adminHome.html" id="nav-admin" class="nav-link">Administración</a>
+            <a href="../cart/cart.html" class="nav-link carrito-link">
+                Ver Carrito <span id="cart-badge" class="badge">0</span>
+            </a>
+            
+            <span id="user-name-display" class="nav-user-name"></span>
+            
+            <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <main>
+        <aside>
+            <h3>CATEGORIAS</h3>
+            <ul id="lista-categorias">
+                </ul>
+        </aside>
+
+        <div id="controles-filtros">
+            <input type="text" id="buscador" placeholder="Buscar producto...">
+            <select id="ordenamiento">
+                <option value="">Ordenar por...</option>
+                <option value="az">Nombre: A - Z</option>
+                <option value="za">Nombre: Z - A</option>
+                <option value="asc">Precio: Menor a Mayor</option>
+                <option value="desc">Precio: Mayor a Menor</option>
+            </select>
+        </div>
+
+        <section id="productos-contenedor" class="productos-grid">
+            </section>
+    </main>
+
+    <script type="module" src="./home.ts"></script>
+</body>
+</html>

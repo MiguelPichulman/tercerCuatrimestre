@@ -1,0 +1,92 @@
+
+:root {
+    --color-primario: #ff6347;
+    --color-fondo: #f0f0f0;
+    --color-texto: #333;
+    --color-blanco: #fff;
+    --color-borde: #ddd;
+    --color-focus: #ff4500;
+}
+
+/* --- CONFIGURACIÓN GLOBAL --- */
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto);
+}
+/* --- HEADER PRINCIPAL --- */
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--color-primario);
+    color: white;
+}
+
+.header-logo { margin: 0; }
+
+.header-logo a {
+    color: white;
+    text-decoration: none; 
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.carrito-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* La burbujita roja/blanca del carrito */
+.badge {
+    background-color: white;
+    color: var(--color-primario);
+    padding: 2px 8px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+}
+
+.btn-logout {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: white;
+    color: var(--color-primario);
+}
+.nav-user-name {
+    color: var(--color-blanco);
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 15px;
+    font-size: 0.95rem;
+}
+.oculto {
+    display: none !important;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos - Food Store</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="./orders.css">
+</head>
+<body>
+
+    <header class="header-principal">
+        <h1 class="header-logo"><a href="../../store/home/home.html">Food Store</a></h1>
+        <nav class="header-nav">
+            <a href="../../store/home/home.html" class="nav-link">Inicio</a>
+            <a href="./orders.html" id="nav-pedidos" class="nav-link">Mis Pedidos</a>
+            <a href="../../admin/adminHome/adminHome.html" id="nav-admin" class="nav-link">Administración</a>
+            <a href="../../store/cart/cart.html" class="nav-link carrito-link">
+                Ver Carrito <span id="cart-badge" class="badge">0</span>
+            </a>
+            
+            <span id="user-name-display" class="nav-user-name"></span>
+            
+            <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <main class="main-orders">
+    <div class="orders-container">
+        <h2>Mis Pedidos</h2>
+        <div id="contenedor-pedidos"></div>
+    </div>
+</main>
+    <div id="modal-detalle" class="modal-overlay oculto">
+    <div class="modal-content client-modal">
+        <button id="btn-cerrar-modal" class="btn-cerrar-top">&times;</button>
+        
+        <div class="modal-body">
+            <div class="modal-top-status">
+                <span id="modal-badge-estado" class="badge-estado"></span>
+                <p class="modal-date">📅 <span id="modal-fecha"></span></p>
+            </div>
+
+            <div class="modal-section-card">
+                <h3 class="section-title">📍 Información de Entrega</h3>
+                <p><strong>Dirección:</strong> <span id="modal-direccion">Retiro en local</span></p>
+                <p><strong>Teléfono:</strong> <span id="modal-telefono"></span></p>
+                <p><strong>Método de pago:</strong> 💵 <span id="modal-pago"></span></p>
+            </div>
+
+            <h3 class="section-title title-spaced">🛍️ Productos</h3>
+            <div id="modal-productos-lista">
+                </div>
+
+            <div class="modal-resumen-card">
+                <div class="resumen-fila">
+                    <span>Subtotal:</span>
+                    <span id="modal-subtotal"></span>
+                </div>
+                <div class="resumen-fila">
+                    <span>Envío:</span>
+                    <span id="modal-envio"></span>
+                </div>
+                <hr class="linea-naranja">
+                <div class="resumen-fila total-fila">
+                    <span class="texto-naranja">Total:</span>
+                    <span id="modal-total" class="texto-naranja"></span>
+                </div>
+            </div>
+
+            <div id="modal-mensaje-estado" class="modal-mensaje-alert">
+                </div>
+        </div>
+    </div>
+</div>
+
+    <script type="module" src="./orders.ts"></script>
+    
+</body>
+</html>

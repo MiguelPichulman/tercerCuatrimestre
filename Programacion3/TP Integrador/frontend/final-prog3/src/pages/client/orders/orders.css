@@ -1,0 +1,150 @@
+/* --- VARIABLES --- */
+:root {
+    --color-primario: #ff6347;
+    --color-fondo: #f0f0f0;
+    --color-texto: #333;
+    --color-blanco: #fff;
+    --color-borde: #ddd;
+    --color-gris-texto: #888;
+}
+
+body { font-family: Arial, sans-serif; background-color: var(--color-fondo); margin: 0; }
+
+/* --- HEADER (Global) --- */
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--color-primario);
+    color: white;
+}
+.header-nav { display: flex; gap: 20px; align-items: center; }
+.nav-link { color: white; text-decoration: none; font-weight: bold; }
+
+/* --- CONTENEDOR PEDIDOS --- */
+.main-orders { 
+    max-width: 600px; 
+    margin: 40px auto; 
+    padding: 0 20px; 
+}
+
+#contenedor-pedidos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- TARJETA DE PEDIDO --- */
+.pedido-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.pedido-detalles {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.pedido-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #e65100;
+    margin-top: 15px;
+}
+
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+.modal-overlay.oculto { display: none; }
+.modal-content { background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; }
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+.btn-cerrar { border: none; background: none; font-size: 1.5rem; cursor: pointer; }
+
+/* --- MODAL DETALLE CLIENTE --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); 
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+.modal-overlay.oculto { display: none; }
+
+.client-modal {
+    position: relative;
+    background: white; border-radius: 12px; width: 95%; max-width: 480px;
+    padding: 30px 25px; max-height: 90vh; overflow-y: auto;
+}
+
+.btn-cerrar-top {
+    position: absolute; top: 15px; right: 20px;
+    background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #888;
+}
+
+.modal-top-status { text-align: center; margin-bottom: 25px; }
+.modal-top-status .badge-estado { font-size: 0.9rem; padding: 8px 20px; }
+.modal-date { color: #888; font-size: 0.9rem; margin-top: 15px; }
+
+.section-title { font-size: 1.1rem; color: #333; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.title-spaced { margin-top: 25px; }
+
+/* Tarjetas internas del modal */
+.modal-section-card, .modal-resumen-card {
+    background-color: #fff; border: 1px solid #f0f0f0; border-radius: 8px; 
+    padding: 15px 20px; margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+.modal-section-card p { margin: 8px 0; color: #555; font-size: 0.95rem; }
+.modal-section-card strong { color: #333; }
+
+/* Item de Producto */
+.producto-modal-item {
+    background-color: #f8f9fa; border-radius: 8px; padding: 15px 20px; margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.producto-modal-nombre { font-weight: bold; color: #333; margin: 0 0 5px 0; font-size: 0.95rem; }
+.producto-modal-cant { color: #888; font-size: 0.85rem; margin: 0; }
+.producto-modal-precio { font-weight: bold; color: var(--color-primario); font-size: 1rem; }
+
+/* Resumen Final */
+.modal-resumen-card { background-color: #f8f9fa; border: none; }
+.resumen-fila { display: flex; justify-content: space-between; margin-bottom: 10px; color: #555; }
+.linea-naranja { border: none; border-top: 1px solid var(--color-primario); margin: 15px 0; }
+.total-fila { font-weight: bold; font-size: 1.1rem; }
+.texto-naranja { color: var(--color-primario); }
+
+/* Banner de Estado Final */
+.modal-mensaje-alert {
+    border-radius: 8px; padding: 15px 20px; margin-top: 20px; text-align: left;
+}
+.modal-mensaje-alert p { margin: 5px 0; font-size: 0.9rem; }
+.alerta-pendiente { background-color: #fff3cd; color: #856404; }
+.alerta-preparacion { background-color: #d1ecf1; color: #0c5460; }
+.alerta-entregado { background-color: #d4edda; color: #155724; }
+
+/* --- BADGES --- */
+.badge-estado {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.estado-PENDIENTE { background-color: #fff3cd; color: #856404; }
+.estado-EN_PREPARACION { background-color: #d1ecf1; color: #0c5460; }
+.estado-ENTREGADO { background-color: #d4edda; color: #155724; }

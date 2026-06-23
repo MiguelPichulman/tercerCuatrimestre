@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Food Store</title>
+    
+    <link rel="stylesheet" href="../../../style.css">
+    
+    <link rel="stylesheet" href="./adminHome.css">
+</head>
+<body>
+    <header class="header-principal">
+        <h1 class="header-logo"><a href="./adminHome.html">Food Store</a></h1>
+        <nav class="header-nav">
+            <a href="../../store/home/home.html" class="nav-link">Tienda</a>
+            <a href="./adminHome.html" class="nav-link">Panel Admin</a>
+            <span id="admin-name-display" class="nav-user-name"></span>
+            <button id="btn-logout-admin" class="btn-logout">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>Administración</h3>
+                <p>Panel de control</p>
+            </div>
+            <nav>
+                <ul class="admin-menu">
+                    <li><a href="./adminHome.html" class="active">📊 Dashboard</a></li>
+                    <li><a href="../categories/categories.html">📁 Categorías</a></li>
+                    <li><a href="../products/products.html">🍔 Productos</a></li>
+                    <li><a href="../orders/orders.html">📦 Pedidos</a></li>
+                    <li class="separador"></li>
+                    <li><a href="../../store/home/home.html" class="link-tienda">🏪 Ver Tienda</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header">
+                <h2>Panel de Administración</h2>
+            </div>
+
+            <section class="dashboard-grid">
+                <div class="dash-card bg-purple">
+                    <div class="card-title">📁 Categorías</div>
+                    <p id="stat-categorias" class="stat-number">0</p>
+                    <a href="../categories/categories.html" class="btn-card">Gestionar</a>
+                </div>
+                
+                <div class="dash-card bg-pink">
+                    <div class="card-title">🍔 Productos</div>
+                    <p id="stat-productos" class="stat-number">0</p>
+                    <a href="../products/products.html" class="btn-card text-pink">Gestionar</a>
+                </div>
+                
+                <div class="dash-card bg-blue">
+                    <div class="card-title">📦 Pedidos</div>
+                    <p id="stat-pedidos" class="stat-number">0</p>
+                    <a href="../orders/orders.html" class="btn-card text-blue">Gestionar</a>
+                </div>
+                
+                <div class="dash-card bg-green">
+                    <div class="card-title">✅ Disponibles</div>
+                    <p id="stat-disponibles" class="stat-number">0</p>
+                    <span class="card-subtitle">Productos activos</span>
+                </div>
+            </section>
+
+            <section class="resumen-section">
+                <div class="resumen-card">
+                    <h3 class="resumen-titulo">📊 Resumen Rápido</h3>
+                    <p id="resumen-texto">Cargando estadísticas...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="./adminHome.ts"></script>
+</body>
+</html>
