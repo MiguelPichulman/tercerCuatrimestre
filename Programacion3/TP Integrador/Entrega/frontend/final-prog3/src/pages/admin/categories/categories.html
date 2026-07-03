@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías - Food Store</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="../adminHome/adminHome.css">
+    <link rel="stylesheet" href="./categories.css">
+</head>
+<body>
+    <header class="header-principal">
+        <h1 class="header-logo"><a href="../adminHome/adminHome.html">Food Store</a></h1>
+        <nav class="header-nav">
+            <a href="../../store/home/home.html" class="nav-link">Tienda</a>
+            <a href="../adminHome/adminHome.html" class="nav-link">Panel Admin</a>
+            <span id="admin-name-display" class="nav-user-name"></span>
+            <button id="btn-logout-admin" class="btn-logout">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>Administración</h3>
+                <p>Panel de control</p>
+            </div>
+            <nav>
+                <ul class="admin-menu">
+                    <li><a href="../adminHome/adminHome.html">📊 Dashboard</a></li>
+                    <li><a href="./categories.html" class="active">📁 Categorías</a></li>
+                    <li><a href="../products/products.html">🍔 Productos</a></li>
+                    <li><a href="../orders/orders.html">📦 Pedidos</a></li>
+                    <li class="separador"></li>
+                    <li><a href="../../store/home/home.html" class="link-tienda">🏪 Ver Tienda</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header flex-header">
+                <div>
+                    <h2>Gestión de Categorías</h2>
+                </div>
+                <button id="btn-nueva-categoria" class="btn-verde">+ Nueva Categoría</button>
+            </div>
+
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-categorias">
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-categoria" class="modal-overlay oculto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-titulo">Nueva Categoría</h2>
+                <button id="btn-cerrar-modal" class="btn-cerrar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-categoria">
+                    <input type="hidden" id="cat-id">
+                    
+                    <label for="cat-nombre">Nombre:</label>
+                    <input type="text" id="cat-nombre" required class="input-form">
+
+                    <label for="cat-img">URL de Imagen (ej: /img/pizza.png):</label>
+                    <input type="text" id="cat-img" required class="input-form">
+
+                    <button type="submit" class="btn-verde btn-guardar">Guardar Categoría</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./categories.ts"></script>
+</body>
+</html>

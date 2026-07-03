@@ -302,7 +302,7 @@ public class Main {
     }
 
     private static void menuReportes(Scanner scanner, ProductoRepository productoRepo, CategoriaRepository categoriaRepo) {
-        System.out.println("\n--- REPORTE DE PRODUCTOS POR CATEGORIA (HU-09) ---");
+        System.out.println("\n--- REPORTE DE PRODUCTOS POR CATEGORIA---");
 
         System.out.println("Categorias disponibles:");
         for (com.tp.jpa.model.Categoria c : categoriaRepo.listarActivos()) {
@@ -332,7 +332,7 @@ public class Main {
                 System.out.println("Atención: El ID ingresado no corresponde a una categoria activa.");
             }
         } catch (NumberFormatException e) {
-            System.out.println("Atención: Debe ingresar un ID numerico valido.");
+            System.out.println("Atencion: Debe ingresar un ID numerico valido.");
         }
     }
 }
